@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ItemsController extends Controller
 {
@@ -18,6 +19,7 @@ class ItemsController extends Controller
 
     public function store()
     {
-        //
+        // dd(request()->all());
+        return Redirect::route('items.index')->with('success', 'Item created');
     }
 }
