@@ -34,6 +34,11 @@
                         </div>
 
                         <!-- Description -->
+                        <div class="mt-4">
+                            <x-input-label for="video_url" :value="__('Description')" />
+
+                            <x-trix-field id="description" name="description" />
+                        </div>
 
                         <x-primary-button class="mt-4">
                             {{ __('Create') }}
