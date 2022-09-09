@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Item;
 
 class ItemsController extends Controller
 {
@@ -26,8 +27,13 @@ class ItemsController extends Controller
             'image' => 'required|image|mimes:jpeg,png|max:2048',
         ]);
 
-        dd($request->all());
+        $image_path = request()->file('image')->storePublicly('/');
 
-        return Redirect::route('items.index')->with('success', 'Item created');
+        $data = $request->all();
+        $data['image'] = $image_path;
+
+        Item::create($data);
+
+        return Redirect::route('items.index');
     }
 }
