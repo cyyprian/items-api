@@ -10,7 +10,7 @@ class ItemsController extends Controller
 {
     public function index()
     {
-        return view('items.index');
+        return view('items.index', ['total_items' => Item::get()->count()]);
     }
 
     public function create()
