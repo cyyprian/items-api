@@ -22,7 +22,7 @@ class ItemsController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
-            'video_url' => 'nullable|string',
+            'video_url' => 'nullable|url',
             'description' => 'nullable|string',
             'image' => 'required|image|mimes:jpeg,png|max:2048',
         ]);
