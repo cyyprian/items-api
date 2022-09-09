@@ -17,9 +17,17 @@ class ItemsController extends Controller
         return view('items.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        // dd(request()->all());
+        $request->validate([
+            'title' => 'required|string',
+            'video_url' => 'nullable|string',
+            'description' => 'nullable|string',
+            'image' => 'required|image|mimes:jpeg,png|max:2048',
+        ]);
+
+        dd($request->all());
+
         return Redirect::route('items.index')->with('success', 'Item created');
     }
 }
